@@ -1,0 +1,45 @@
+create user vaishnav identified by vaishnav3456;
+grant dba to vaishnav;
+
+create table person1(driver_id varchar(10),name varchar(20),address varchar(30),primary key(driver_id));
+create table car12(reg_num varchar(10),model varchar(10),year int,primary key(reg_num));
+
+clear screen 
+
+create table accident(report_num int,accident_date date,location varchar(20),primary key(report_num));
+
+create table owns12(driver_id varchar(10),reg_num varchar(10),primary key(driver_id,reg_num),foreign key(driver_id) references person(driver_id),foreign key(reg_num) references car(reg_num));
+
+create table participated(driver_id varchar(10), reg_num varchar(10),
+report_num int, damage_amount int,
+primary key(driver_id,reg_num,report_num),
+foreign key(driver_id) references person(driver_id),
+foreign key(reg_num) references car(reg_num),
+foreign key(report_num) references accident(report_num));
+
+desc participated
+ 
+ 
+ 
+ 
+ 
+insert into PERSON values('12','vaishnav3','BMSCE1');
+insert into PERSON values('13','vaishnav2','BMSCE2');
+insert into PERSON values('14','vaishnav1','BMSCE3');
+select * from person;
+commit 
+
+insert into car  values('ka021234','krishna','2015');
+insert into car  values('ka02123','***','2012');
+insert into car  values('ka0212344','0000','2035');
+commit;
+select * from car; 
+insert into accident values('41','01/01/03','mysore road');
+insert into accident values('22','03-02-04','south end circle');
+insert into accident values('33','21-01-03','bull temple road');
+select * from accident;
+commit;
+insert into owns12  values('12','ka021234');
+insert into owns12  values('13','ka02123');
+select * from owns12;
+commit;
